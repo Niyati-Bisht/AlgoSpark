@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "AlgoSpark - AI Code Helper",
+  "version": "1.0.2",
+  "description": "Analyze code with AI - Get hints, suggestions, explanations, and solutions instantly",
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "content.js"
+      ],
+      "matches": [
+        "https://leetcode.com/*"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "128": "icons/icon128.png",
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "AlgoSpark"
+  },
+  "icons": {
+    "128": "icons/icon128.png",
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png"
+  },
+  "commands": {
+    "analyze-code": {
+      "description": "Analyze selected code",
+      "suggested_key": {
+        "default": "Ctrl+Shift+Space"
+      }
+    }
+  }
+}
